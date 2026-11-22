@@ -4,6 +4,7 @@
 
 ## Unreleased
 
+- 创建公开 GitHub Release，并上传 V0.3 Debug APK；明确其仅为测试构建，不是正式稳定发行包。
 - 更正原版 `base.apk` 与 V0.3 Debug APK 的文件身份、签名和 SHA-256，详见 [APK_AUDIT.md](APK_AUDIT.md)。
 - 核对 V0.3 构建源码 ZIP SHA-256：`e410f10fe59cb53105932d745d4945066c057eee69f1c279650c22c707ceaf03`。
 - 核实 V0.3 `:app:assembleDebug` 成功，JVM 单元测试 41/41 通过。
