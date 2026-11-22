@@ -53,7 +53,7 @@ SHA-256：
 ## E. 后续正式发行建议
 
 1. 如继续分发当前 APK，应保留 V0.3 Debug 构建标识，并展示 SHA-256、签名信息与 ABI 范围。
-2. 后续正式发行时构建 Release variant，确认 `debuggable=false)，并使用项目所有者安全保管的正式签名密钥。
+2. 后续正式发行时构建 Release variant，确认 `debuggable=false，并使用项目所有者安全保管的正式签名密钥。
 3. 不要上传 keystore、签名私钥、密码或访问令牌。
 4. 补齐中文资源并处理 Lint 错误。
 5. 将真机设备、系统版本、测试场景和结果归档。
