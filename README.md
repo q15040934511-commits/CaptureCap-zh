@@ -6,27 +6,31 @@
 
 ## 当前状态
 
-**仓库已创建公开 GitHub Release，并上传了 V0.3 Debug APK（Release 资产显示为“基础.apk”）。但这只是测试构建，不是正式稳定发行版，不建议普通用户作为日常版本安装。**
+**V0.3 已完成维护者反馈的真机实际测试，整体使用未发现重大问题；当前 APK 已具备对外提供体验和收集反馈的条件。** 本项目仍将它明确标记为 V0.3 Debug 构建，而不是已完成正式签名和全部发布审查的 Production Release。
 
-该 APK 的 SHA-256 为：
-`d24bfd3ec0e6f25ca59d50831319ec461e29315ade60628f6f2860918469e0f5`
+当前公开 GitHub Releases 页面提供 V0.3 APK（资产显示名称为“基础.apk”）。APK 的已核验信息：
 
-V0.3 Debug APK：30,597,172 bytes，Android Debug 签名，arm64-v8a only，`debuggable=true`。签名与原作者正式 APK 不同，不能直接覆盖安装原作者签名版本。发布页中的 GitHub 自动生成 Source code ZIP/tar.gz 只是仓库提交快照，不是本项目完整 Android Studio 工程源码包。
+- 文件大小：30,597,172 bytes
+- SHA-256：`d24bfd3ec0e6f25ca59d50831319ec461e29315ade60628f6f2860918469e0f5`
+- 包名：`com.yepgoryo.CaptureCap`
+- versionName / versionCode：`3.9.8.8 / 46`
+- ABI：仅 arm64-v8a
+- 签名：Android Debug；Manifest 为 `debuggable=true`
 
-仓库此前把原版 `base.apk` 与 V0.3 Debug APK 混为一谈，现已在审计文档中更正：
-- 原版 `base.apk`：29,852,405 bytes，原作者签名，无本项目新增 Hi-Fi 类。
-- V0.3 Debug APK：30,597,172 bytes，Android Debug 签名，arm64-v8a only，`debuggable=true`。
+真机测试状态已根据项目维护者最新确认更新。当前尚未提供可归档的设备型号、Android 版本、逐项测试矩阵和测试日志，因此文档不会将每一项测试伪写成独立的 PASS 记录。详细说明见 [TEST_REPORT.md](TEST_REPORT.md)。
 
-V0.3 对应的完整源码包和构建证据已在项目工作材料中核对 SHA-256，但**源码 ZIP 尚未上传到本 GitHub 仓库**。当前仓库因此仍不是可直接下载源码并复现构建的完整仓库。详情见 [SOURCE_ARCHIVE.md](SOURCE_ARCHIVE.md)。
+**安装兼容性提醒：** 该 APK 使用 Debug 签名，与原作者签名版本不同，不能直接覆盖安装原作者版本。安装前请备份重要数据；不要为了安装测试包而贸然卸载已有应用。
+
+GitHub Releases 自动生成的 Source code ZIP/tar.gz 只是仓库提交快照，不是完整 Android Studio 工程源码包。
 
 ## 已核实的 V0.3 内容
 
 - 源码中存在 WAV/FLAC PCM16 录音实现和中断 Session 恢复逻辑。
 - `:app:assembleDebug` 构建成功。
 - JVM 单元测试 41/41 通过。
-- `:app:lintDebug` 失败：257 errors、1083 warnings、1 hint。
-- 所有 Android 真机 A–F 运行测试均为 **NOT RUN**，不能据此宣称真机录音稳定。
-- 简体中文资源是**部分本地化**，不是完整汉化。匹配构建源码的默认资源有 314 个 string 项，`values-zh-rCN` 有 181 个，仍有 133 个 string key 缺失。
+- 维护者已确认完成真机实际测试，整体无重大问题；分项设备、系统版本和原始记录尚未归档。
+- `:app:lintDebug` 失败：257 errors、1083 warnings、1 hint。该结果已如实保留，不能称为 Lint 全部通过。
+- 简体中文资源是**部分本地化**：匹配构建源码的默认资源有 314 个 string 项，`values-zh-rCN` 有 181 个，仍有 133 个 string key 缺失。
 - 在已核对的 V0.3 源码中，没有找到可确认的“全部录制数据仅存 RAM”模式实现，因此目前不把 RAM 临时存储列为已实现功能。
 
 详细证据：
@@ -35,6 +39,7 @@ V0.3 对应的完整源码包和构建证据已在项目工作材料中核对 SH
 - [功能测试报告](TEST_REPORT.md)
 - [源码包指纹与选择说明](SOURCE_ARCHIVE.md)
 - [第三方组件与许可证说明](THIRD_PARTY_NOTICES.md)
+- [发布前检查清单](RELEASE_CHECKLIST.md)
 
 ## 改版方向
 
@@ -49,7 +54,7 @@ V0.3 对应的完整源码包和构建证据已在项目工作材料中核对 SH
 
 [查看 GitHub Releases](https://github.com/q15040934511-commits/CaptureCap-zh/releases)
 
-当前 Release 中的 V0.3 Debug APK 仅供测试和问题反馈，不代表正式稳定版。正式发行前仍需完成 Release variant 构建、正式签名、真机回归测试、许可证核查，并上传与 APK 精确对应的源码包。每次正式发布都应附版本号、变更说明、SHA-256、签名信息和源码基线。
+当前 V0.3 APK 可以作为已完成维护者真机体验测试的阶段版本对外提供；请同时展示 APK 哈希、Debug 签名、arm64-v8a 限制和真机测试记录边界。若后续发布正式稳定版，仍应构建 Release variant、使用妥善保管的正式签名密钥、完成剩余 Lint 与许可证核查，并上传与 APK 精确对应的源码包。
 
 ## 许可证
 
@@ -61,4 +66,4 @@ V0.3 对应的完整源码包和构建证据已在项目工作材料中核对 SH
 
 ## 反馈
 
-欢迎通过 GitHub Issues 提交可复现的问题。请注明 APK 版本、Android 版本、设备型号、复现步骤和实际结果；上传日志前请移除个人信息。
+欢迎通过 GitHub Issues 提交可复现的问题。请注明 APK 版本、Android 版本、设备型号、复现步骤和实际结果；上传日志前请移除个人信息。不要在公开 Issue、提交记录或聊天截图中发布签名密钥、密码、访问令牌或个人录音。
