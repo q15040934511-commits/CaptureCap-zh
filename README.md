@@ -6,7 +6,12 @@
 
 ## 当前状态
 
-**目前没有可供普通用户下载的正式 Release。** 当前 V0.3 APK 是 Debug 构建，不应作为正式公开发行包。
+**仓库已创建公开 GitHub Release，并上传了 V0.3 Debug APK（Release 资产显示为“基础.apk”）。但这只是测试构建，不是正式稳定发行版，不建议普通用户作为日常版本安装。**
+
+该 APK 的 SHA-256 为：
+`d24bfd3ec0e6f25ca59d50831319ec461e29315ade60628f6f2860918469e0f5`
+
+V0.3 Debug APK：30,597,172 bytes，Android Debug 签名，arm64-v8a only，`debuggable=true`。签名与原作者正式 APK 不同，不能直接覆盖安装原作者签名版本。发布页中的 GitHub 自动生成 Source code ZIP/tar.gz 只是仓库提交快照，不是本项目完整 Android Studio 工程源码包。
 
 仓库此前把原版 `base.apk` 与 V0.3 Debug APK 混为一谈，现已在审计文档中更正：
 - 原版 `base.apk`：29,852,405 bytes，原作者签名，无本项目新增 Hi-Fi 类。
@@ -42,7 +47,9 @@ V0.3 对应的完整源码包和构建证据已在项目工作材料中核对 SH
 
 ## 下载
 
-正式 APK 应通过 [GitHub Releases](https://github.com/q15040934511-commits/CaptureCap-zh/releases) 发布。当前 Debug APK 不作为正式公开下载版本。正式 Release 应附版本号、完整变更说明、SHA-256、签名信息，以及与 APK 对应的源码提交或源码包。
+[查看 GitHub Releases](https://github.com/q15040934511-commits/CaptureCap-zh/releases)
+
+当前 Release 中的 V0.3 Debug APK 仅供测试和问题反馈，不代表正式稳定版。正式发行前仍需完成 Release variant 构建、正式签名、真机回归测试、许可证核查，并上传与 APK 精确对应的源码包。每次正式发布都应附版本号、变更说明、SHA-256、签名信息和源码基线。
 
 ## 许可证
 
