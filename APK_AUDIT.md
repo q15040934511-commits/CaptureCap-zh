@@ -1,6 +1,6 @@
-# APK 静态核验报告
+# APK 静态核验与测试状态报告
 
-本报告区分用户最初提供的原版 `base.apk` 与 V0.3 构建产物。静态检查和构建记录不等于 Android 真机运行验收。
+本报告区分用户最初提供的原版 `base.apk` 与 V0.3 构建产物。静态检查、构建日志和维护者反馈分别记录，不将三者混为同一种证据。
 
 ## 1. 原版 base.apk
 
@@ -35,7 +35,7 @@
 | Manifest | `android:debuggable=true` |
 | DEX 构建模式 | `compilation-mode=debug` |
 
-构建证据记录：ZIP 完整性检查通过，zipalign 常规与 16 KB 检查通过，apksigner v2 校验通过。该 APK **不是正式 Release**，也不能覆盖安装在设备上的原作者签名版；签名不一致时 Android 会拒绝更新安装。
+构建证据记录：ZIP 完整性检查通过，zipalign 常规与 16 KB 检查通过，apksigner v2 校验通过。该 APK 是可安装和体验的 Debug 构建，但不是使用正式发布密钥签名的 Release variant。它不能覆盖安装在设备上的原作者签名版；签名不一致时 Android 会拒绝更新安装。
 
 ## 3. 源码与 APK 对应关系
 
@@ -43,7 +43,7 @@
 - 文件名：`CaptureCap_HiFi_下一轮整改_V0.3_完整源码.zip`
 - SHA-256：`e410f10fe59cb53105932d745d4945066c057eee69f1c279650c22c707ceaf03`
 
-该 SHA 与当前留存源码包实际计算值一致；构建报告同时记录了对应 APK 的 SHA-256。另有一个名称相近的 `CaptureCap高保真录音源码_V0.3.zip`，其 SHA 为 `1c6ebd8530c2cd8bb004b7d7e6156cef1e75b67ece664ffce0a2cd5297fb66b2)，**不等于构建报告指定的源码基线**，不要将两份 ZIP 混用。详见 [SOURCE_ARCHIVE.md](SOURCE_ARCHIVE.md)。
+该 SHA 与当前留存源码包实际计算值一致；构建报告同时记录了对应 APK 的 SHA-256。另有一个名称相近的 `CaptureCap高保真录音源码_V0.3.zip`，其 SHA 为 `1c6ebd8530c2cd8bb004b7d7e6156cef1e75b67ece664ffce0a2cd5297fb66b2`，**不等于构建报告指定的源码基线**，不要将两份 ZIP 混用。详见 [SOURCE_ARCHIVE.md](SOURCE_ARCHIVE.md)。
 
 ## 4. 功能静态线索与边界
 
@@ -54,11 +54,11 @@ V0.3 DEX/源码中存在：
 - `LosslessSessionJournal`
 - WAV/FLAC PCM16 输出和中断 Session 标记/恢复相关逻辑
 
-这些内容证明实现代码存在，不证明真机录音、SAF 导出、暂停恢复或进程强杀恢复已经通过验收。
+以上是代码层面的核验结果。
 
 ### 中文本地化
 
-匹配构建源码中存在 `values-zh-rCN/strings.xml`，因此此前“没有找到简体中文资源”的说法不准确。按当前构建源码 XML 直接统计：
+匹配构建源码中存在 `values-zh-rCN/strings.xml`。按当前构建源码 XML 直接统计：
 - 默认 `values/strings.xml`：314 个 `<string>` 项；
 - `values-zh-rCN/strings.xml`：181 个 `<string>` 项；
 - 仍缺少 133 个对应 string key。
@@ -74,16 +74,17 @@ V0.3 DEX/源码中存在：
 - `:app:assembleDebug`：成功。
 - `:app:testDebugUnitTest`：41 tests，0 failures，0 skipped。
 - `:app:lintDebug`：失败，257 errors / 1083 warnings / 1 hint。
-- Android 真机 A–F 测试：全部 NOT RUN；构建环境没有连接设备，模拟器也未能启动。
+- **真机实际测试：项目维护者已确认完成，整体使用未发现重大问题。** 该状态根据维护者最新反馈记录。
+- 当前归档材料尚未包含测试设备型号、Android 版本、各测试项的逐项结果、测试时长或原始录音/日志，因此不把未提供的细项写成独立 PASS，也不声称这些记录已由本仓库独立复核。
 
-完整摘要见 [BUILD_REPORT.md](BUILD_REPORT.md) 和 [TEST_REPORT.md](TEST_REPORT.md)。
+详细说明见 [BUILD_REPORT.md](BUILD_REPORT.md) 和 [TEST_REPORT.md](TEST_REPORT.md)。
 
-## 6. 发布阻断项
+## 6. 后续版本建议
 
-1. 重新构建 Release variant，确认 Manifest 不可调试。
-2. 由项目所有者自行保管发布签名密钥；不得上传私钥或 keystore。
+1. 若继续对外分发当前 APK，保留“V0.3 Debug 构建”标识，并明确 Debug 签名、`debuggable=true` 和 arm64-v8a 限制。
+2. 后续正式发行时构建 Release variant，确认 `debuggable=false)，由项目所有者安全保管并使用正式签名密钥。
 3. 决定版本号策略，避免沿用与上游相同的 3.9.8.8 / 46 造成误解。
-4. 补齐部分中文翻译，并重新运行 Lint。
-5. 完成真机录制、暂停恢复、SAF、存储空间不足和异常恢复测试。
+4. 补齐部分中文翻译并处理 Lint 错误。
+5. 将真机测试设备、系统版本、测试场景和结果归档，便于其他用户复核。
 6. 完成第三方组件 SBOM 与许可证义务核查。
 7. 将准确的 V0.3 源码包上传到 GitHub，并把 APK Release 与对应源码绑定。
