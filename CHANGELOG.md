@@ -1,17 +1,17 @@
 # 更新日志
 
-本文件只记录已经核实并随对应版本发布的变化。计划中的功能不会提前标记为已完成。
+本文件只记录已经核实的仓库或 APK 变化。静态代码线索不会被写成已通过设备测试的功能。
 
 ## Unreleased
 
-- 建立中文增强版项目仓库与基础文档。
-- 整理上游 MIT 许可证及 APK 中可见的部分第三方许可证文本。
+- 完善项目首页、上游来源、APK 核验和第三方许可证文档。
+- 静态检查当前 APK：识别 WAV/FLAC PCM 无损音频处理及 lossless session 恢复相关代码。
+- 发现当前 APK 是 Debug 构建（`debuggable=true`，Android Debug 测试证书），暂不适合正式发布。
+- 中文资源和 RAM 临时存储行为仍待完整源码与设备核验。
+- 完整修改后 Android Studio 源码尚未入库。
 
-## 首个 APK 版本（待核验）
+## 当前 APK（静态核验，不是正式 Release）
 
-- [ ] 核实 APK 的 versionName、versionCode 与签名信息。
-- [ ] 确认对应的 CaptureCap 上游版本或提交。
-- [ ] 列出实际完成的中文翻译和功能改动。
-- [ ] 完成录屏、音频、FLAC、RAM 临时存储、后台中断及文件保存测试。
-- [ ] 完成第三方组件许可证与对应源码核查。
-- [ ] 提供匹配的修改后源代码及可复现构建说明。
+- versionName：3.9.8.8
+- versionCode：46
+- 详细信息见 [APK_AUDIT.md](APK_AUDIT.md)。
