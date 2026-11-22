@@ -1,6 +1,6 @@
 # CaptureCap Hi-Fi V0.3 构建报告
 
-本报告依据 V0.3 构建证据包中的构建日志摘要整理。它记录的是构建环境结果，不代表 Android 真机功能验收。
+本报告依据 V0.3 构建证据包中的构建日志摘要整理。它记录构建环境与构建产物；维护者后来完成的真机测试另见 [TEST_REPORT.md](TEST_REPORT.md)。
 
 ## 构建环境
 
@@ -13,8 +13,10 @@
 | Kotlin | 2.2.10 |
 | compileSdk / targetSdk / minSdk | 37 / 37 / 24 |
 | NDK | 27.0.12077973 |
-| 真机 | 无；adb devices 为空 |
+| 构建主机设备状态 | 当时 `adb devices` 为空 |
 | 虚拟化 | 无 /dev/kvm，模拟器未成功启动 |
+
+**说明：** 上表中的设备状态只描述当时的构建主机，不代表项目从未做过真机测试。项目维护者现已确认 V0.3 真机实际测试完成，整体未发现重大问题；测试反馈与可归档明细见 [TEST_REPORT.md](TEST_REPORT.md)。
 
 ## 构建输入
 
@@ -50,8 +52,8 @@ Lint 错误类型统计：MissingTranslation 214、NewApi 23、Orientation 11、
 | ZIP 完整性 | 通过 |
 | zipalign | 常规与 16 KB 检查通过 |
 
-此 APK 是 Debug 构建，不是正式发布包。JVM 单元测试通过也不代表 Android 系统录音、SAF 或长时间录制在真机上通过。
+此 APK 是 Debug 构建，不是正式发布密钥签名的 Release variant。它可以作为明确标注的 V0.3 阶段版本提供体验；如后续制作正式稳定版，应重新构建 Release variant 并使用正式签名。
 
 ## 证据边界
 
-详细原始日志、JUnit XML、Lint 结果、APK 签名和对齐检查记录位于项目构建证据包。当前 GitHub 仓库记录的是可读摘要；不能把摘要当作完整原始日志。
+详细原始日志、JUnit XML、Lint 结果、APK 签名和对齐检查记录位于项目构建证据包。当前 GitHub 仓库记录的是可读摘要；不能把摘要当作完整原始日志。真机总体测试结论来自维护者确认，现阶段没有完整的设备信息与逐项原始记录可供独立复核。
