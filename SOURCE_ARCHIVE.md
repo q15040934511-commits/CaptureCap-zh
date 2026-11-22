@@ -1,33 +1,28 @@
 # V0.3 源码包指纹与基线说明
 
-## 与构建证据匹配的源码包
-
-构建报告指定的源码输入为：
+## 已核验的完整源码包
 
 - 文件名：`CaptureCap_HiFi_下一轮整改_V0.3_完整源码.zip`
 - 大小：14,154,868 bytes
 - SHA-256：`e410f10fe59cb53105932d745d4945066c057eee69f1c279650c22c707ceaf03`
+- ZIP 完整性：本次重新运行 `unzip -t`，所有条目通过。
+- 工程结构：包含 `gradlew.bat`、`settings.gradle.kts`、`app/build.gradle.kts` 等 Android Studio/Gradle 工程文件，共 890 个归档条目。
 
-已对当前留存的该 ZIP 重新计算 SHA-256，结果与构建报告完全一致。这是当前能够与 V0.3 构建记录绑定的源码基线。
+该 SHA 与构建报告指定的 V0.3 源码基线一致。这是可供解压、检查和构建的完整工程 ZIP，不是将 APK 再压缩得到的文件。
 
 ## 不要混用相似文件名
 
-另有一个名称相近的 `CaptureCap高保真录音源码_V0.3.zip`：
+另有名称相近的源码 ZIP，SHA-256 不同。请只使用上述文件及 SHA，不要混用其他 V0.3 ZIP。
 
-- 大小：14,088,829 bytes
-- SHA-256：`1c6ebd8530c2cd8bb004b7d7e6156cef1e75b67ece664ffce0a2cd5297fb66b2`
+## GitHub 仓库上传状态
 
-它与构建报告指定的源码包 SHA 不同，不能拿它冒充本次构建的输入源码。
+**当前仓库尚未包含上述二进制源码 ZIP。** 本次已将其校验信息和目标路径记录在仓库的 `source/README.md` 与 `source/SHA256SUMS.txt`。
 
-## 当前 GitHub 仓库状态
-
-上述正确源码 ZIP 已在工作材料中核验，但**尚未作为二进制文件上传到本 GitHub 仓库**。因此，当前仓库还不能让第三方仅通过 GitHub clone 就取得这份完整工程。
-
-发布前应将 SHA 匹配的源码包上传到仓库或正式 Release，并在发布页附上 SHA-256。若选择上传到仓库，建议路径：
+目标仓库路径：
 
 `source/CaptureCap_HiFi_下一轮整改_V0.3_完整源码.zip`
 
-如果用户通过 GitHub 网页上传，请务必选择 SHA 与上面一致的文件。
+需要将经过 SHA-256 核验的原始 ZIP 上传到该路径。GitHub 自动生成的 Source code ZIP/tar.gz 是仓库提交快照，不等同于此 Android Studio 完整工程。
 
 ## 版本与构建绑定
 
@@ -35,4 +30,4 @@ V0.3 Debug APK SHA-256：
 
 `d24bfd3ec0e6f25ca59d50831319ec461e29315ade60628f6f2860918469e0f5`
 
-源码包 SHA 与 APK SHA 必须在同一 Release 说明中同时列出。后续任何源码修改都应产生新提交、新构建和新 APK 哈希，不能沿用旧证据。
+源码包 SHA 与 APK SHA 应在同一 Release 说明中列出。后续任何源码修改都应产生新提交、新构建和新 APK 哈希，不能沿用旧证据。
