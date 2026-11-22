@@ -8,20 +8,26 @@
 
 **V0.3 已完成维护者反馈的真机实际测试，整体使用未发现重大问题；当前 APK 已具备对外提供体验和收集反馈的条件。** 本项目仍将它明确标记为 V0.3 Debug 构建，而不是已完成正式签名和全部发布审查的 Production Release。
 
-当前公开 GitHub Releases 页面提供 V0.3 APK（资产显示名称为“基础.apk”）。APK 的已核验信息：
+当前公开的 GitHub Release 使用 tag `v1.0.0`，Release 标题为 `CaptureCap-zh-v1.0.0.apk`。其中 APK 资产名称为 `base.apk`，已核验信息如下：
 
 - 文件大小：30,597,172 bytes
 - SHA-256：`d24bfd3ec0e6f25ca59d50831319ec461e29315ade60628f6f2860918469e0f5`
 - 包名：`com.yepgoryo.CaptureCap`
-- versionName / versionCode：`3.9.8.8 / 46`
+- APK 内部 versionName / versionCode：`3.9.8.8 / 46`
 - ABI：仅 arm64-v8a
 - 签名：Android Debug；Manifest 为 `debuggable=true`
 
+**版本号说明：** GitHub Release tag `v1.0.0` 是仓库发布标签，不会改变 APK 内部的 `3.9.8.8 / 46`。当前二进制仍属于 V0.3 Debug 构建。
+
+**Release 描述更正：** 公开 Release 的旧描述曾列出 RAM 临时存储和中文界面本地化。根据当前源码审计，RAM-only 模式未能证实，简体中文也只是部分本地化。请参阅 [Release 页面更正说明](RELEASE_CORRECTION.md)，不要将这两项误认为已完整实现。
+
+**ZIP 资产说明：** Release 中名为 `CaptureCap-zh-v1.0.0.zip` 的文件只是 APK 的 ZIP 包装副本，不是 Android Studio 完整源码工程。真正的 V0.3 完整源码包及其 SHA-256 见 [源码包说明](SOURCE_ARCHIVE.md)；该二进制源码 ZIP 目前仍待上传至仓库的 `source/` 目录。
+
 真机测试状态已根据项目维护者最新确认更新。当前尚未提供可归档的设备型号、Android 版本、逐项测试矩阵和测试日志，因此文档不会将每一项测试伪写成独立的 PASS 记录。详细说明见 [TEST_REPORT.md](TEST_REPORT.md)。
 
-**安装兼容性提醒：** 该 APK 使用 Debug 签名，与原作者签名版本不同，不能直接覆盖安装原作者版本。安装前请备份重要数据；不要为了安装测试包而贸然卸载已有应用。
+**安装兼容性提醒：** 该 APK 使用 Debug 签名，与原作者签名版不同，不能直接覆盖安装原作者版本。安装前请备份重要数据；不要为了安装测试包而贸然卸载已有应用。
 
-GitHub Releases 自动生成的 Source code ZIP/tar.gz 只是仓库提交快照，不是完整 Android Studio 工程源码包。
+GitHub Releases 自动生成的 Source code ZIP/tar.gz 只是仓库提交快照，不等同于此 Android Studio 完整工程源码包。
 
 ## 已核实的 V0.3 内容
 
