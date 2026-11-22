@@ -40,6 +40,7 @@
 ## 3. 源码与 APK 对应关系
 
 构建报告记录的 V0.3 源码 ZIP：
+
 - 文件名：`CaptureCap_HiFi_下一轮整改_V0.3_完整源码.zip`
 - SHA-256：`e410f10fe59cb53105932d745d4945066c057eee69f1c279650c22c707ceaf03`
 
@@ -48,6 +49,7 @@
 ## 4. 功能静态线索与边界
 
 V0.3 DEX/源码中存在：
+
 - `HighFidelityAudioCapture`
 - `PcmCapturePipeline`
 - `WavPcm16Writer` / `FlacPcm16Writer`
@@ -59,6 +61,7 @@ V0.3 DEX/源码中存在：
 ### 中文本地化
 
 匹配构建源码中存在 `values-zh-rCN/strings.xml`。按当前构建源码 XML 直接统计：
+
 - 默认 `values/strings.xml`：314 个 `<string>` 项；
 - `values-zh-rCN/strings.xml`：181 个 `<string>` 项；
 - 仍缺少 133 个对应 string key。
@@ -82,7 +85,7 @@ V0.3 DEX/源码中存在：
 ## 6. 后续版本建议
 
 1. 若继续对外分发当前 APK，保留“V0.3 Debug 构建”标识，并明确 Debug 签名、`debuggable=true` 和 arm64-v8a 限制。
-2. 后续正式发行时构建 Release variant，确认 `debuggable=false，由项目所有者安全保管并使用正式签名密钥。
+2. 后续正式发行时构建 Release variant，确认 `debuggable=false`，并由项目所有者安全保管和使用正式签名密钥。
 3. 决定版本号策略，避免沿用与上游相同的 3.9.8.8 / 46 造成误解。
 4. 补齐部分中文翻译并处理 Lint 错误。
 5. 将真机测试设备、系统版本、测试场景和结果归档，便于其他用户复核。
