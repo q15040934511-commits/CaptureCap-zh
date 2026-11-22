@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+- 更正公开 `v1.0.0` Release 的资产身份与功能描述，准备了可直接替换的 Release 正文，见 [RELEASE_CORRECTION.md](RELEASE_CORRECTION.md)。
+- 明确 Release 中的 `CaptureCap-zh-v1.0.0.zip` 是 APK 的 ZIP 包装副本，不是 Android Studio 完整源码工程。
 - 更新 V0.3 真机测试状态：项目维护者确认实际测试已完成，整体使用未发现重大问题。
 - 更正此前“真机 A–F 全部 NOT RUN”的过时表述；构建主机当时未连接设备不代表项目后来没有完成真机测试。
 - 明确当前仍缺少设备型号、Android 版本、逐项测试结果和原始记录，不虚构分项 PASS。
