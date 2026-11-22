@@ -2,7 +2,7 @@
 
 **当前状态：公开 GitHub Release 已创建，但其中上传的是 V0.3 Debug APK，不是正式稳定发行包。**
 
-截图所示 Release 资产名为“基础.apk”，大小约 29.2 MiB；其 SHA-256 前缀与构建记录中的 V0.3 Debug APK 一致。该 Debug APK 的完整 SHA-256 为：
+截图所示 Release 资产名为“基础.apk”，大小约 29.2 MB；其 SHA-256 前缀与构建记录中的 V0.3 Debug APK 一致。该 Debug APK 的完整 SHA-256 为：
 
 `d24bfd3ec0e6f25ca59d50831319ec461e29315ade60628f6f2860918469e0f5`
 
