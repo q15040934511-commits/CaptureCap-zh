@@ -1,6 +1,10 @@
 # APK 与 Release 状态核验记录
 
-**当前状态：没有可发布的正式 Release。**
+**当前状态：公开 GitHub Release 已创建，但其中上传的是 V0.3 Debug APK，不是正式稳定发行包。**
+
+截图所示 Release 资产名为“基础.apk”，大小约 29.2 MiB；其 SHA-256 前缀与构建记录中的 V0.3 Debug APK 一致。该 Debug APK 的完整 SHA-256 为：
+
+`d24bfd3ec0e6f25ca59d50831319ec461e29315ade60628f6f2860918469e0f5`
 
 此前文档将原版 `base.apk` 与 V0.3 Debug APK 混为同一文件，现已更正。两个文件的大小、SHA-256 和签名不同，不能互换。
 
@@ -13,11 +17,11 @@
 - 签名：CN=Egor Yakovlev，原作者签名
 - ABI：arm64-v8a、armeabi-v7a、x86、x86_64
 
-这是原版对照包，不是本项目改版发布包。
+这是原版对照包，不是本项目 V0.3 改版发布包。
 
 ## B. V0.3 Debug APK
 
-- 文件名：`CaptureCap_HiFi_V0.3_debug_arm64.apk`
+- 文件名：Release 页面显示为“基础.apk”；构建产物原名为 `CaptureCap_HiFi_V0.3_debug_arm64.apk`
 - 文件大小：30,597,172 bytes
 - SHA-256：`d24bfd3ec0e6f25ca59d50831319ec461e29315ade60628f6f2860918469e0f5`
 - Application ID：`com.yepgoryo.CaptureCap`
@@ -26,7 +30,7 @@
 - 签名：CN=Android Debug；仅 APK Signature Scheme v2
 - Manifest：`debuggable=true`
 
-ZIP 完整性、zipalign 和 v2 签名校验通过，但这不代表真机功能验收通过。它不能作为正式 Release，也不能覆盖更新原作者签名版。
+ZIP 完整性、zipalign 和 v2 签名校验通过，但这不代表真机功能验收通过。它不能作为正式 Release，也不能覆盖安装在设备上的原作者签名版；签名不一致时 Android 会拒绝更新安装。
 
 ## C. 对应源码基线
 
@@ -45,7 +49,7 @@ SHA-256：
 - lintDebug：失败，257 errors / 1083 warnings / 1 hint。
 - Android 真机 A–F 测试：全部 NOT RUN。
 
-因此，当前 APK 仅可作为内部测试构建记录，不建议公开作为正式下载包。
+因此，当前 Release 只能标注为内部测试构建，不应宣传为稳定正式版或真机验收通过版本。
 
 ## E. 正式发布前置条件
 
